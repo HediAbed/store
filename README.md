@@ -8,7 +8,7 @@ This Project is an example of an eCommerce for selling books: where there are tw
 
 # RDB Conception
 
-![](images/StoreEcommerceBR.JPG)
+![](images/br.PNG)
 
 # Tech
 
