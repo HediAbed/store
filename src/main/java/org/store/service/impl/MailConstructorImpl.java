@@ -1,0 +1,61 @@
+package org.store.service.impl;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
+import org.springframework.stereotype.Service;
+import org.store.domain.Order;
+import org.store.domain.User;
+import org.store.service.MailConstructor;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
+
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Locale;
+
+@Service
+public class MailConstructorImpl implements MailConstructor {
+	
+	@Autowired
+	private Environment env;
+	
+	@Autowired
+	private TemplateEngine templateEngine;
+
+	@Override
+	public SimpleMailMessage constructNewUserEmail(User user, String password) {
+		String message="\nPlease use the following credentials to log in and edit your personal information including your own password."
+				+ "\nUsername: "+user.getUsername()+"\nPassword: "+password;
+		SimpleMailMessage email = new SimpleMailMessage();
+		email.setTo(user.getEmail());
+		email.setSubject("Abed's Store - New User");
+		email.setText(message);
+		email.setFrom(env.getProperty("support.email"));
+		return email;
+	}
+
+	@Override
+	public MimeMessagePreparator constructOrderConfirmationEmail (User user, Order order, Locale locale) {
+		Context context = new Context();
+		context.setVariable("order", order);
+		context.setVariable("user", user);
+		context.setVariable("cartItemList", order.getCartItemList());
+		String text = templateEngine.process("orderConfirmationEmailTemplate", context);
+		MimeMessagePreparator messagePreparator = new MimeMessagePreparator() {
+			@Override
+			public void prepare(MimeMessage mimeMessage) throws Exception {
+				MimeMessageHelper email = new MimeMessageHelper(mimeMessage);
+				email.setTo(user.getEmail());
+				email.setSubject("Order Confirmation - "+order.getId());
+				email.setText(text,true);
+				email.setFrom(new InternetAddress("hedi.abed.0@gmail.com"));
+			}
+		};
+		return messagePreparator;
+	}
+
+}
