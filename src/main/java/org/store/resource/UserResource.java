@@ -43,12 +43,14 @@ public class UserResource {
 
 	@PostMapping(path = "/create")
 	public ResponseEntity createUser(@RequestBody CreateUserRequest createUserRequest) {
+
+
 		if (userService.findByUsername(createUserRequest.getUsername()).isPresent()) {
-			return new ResponseEntity("usernameExists", HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity("username exists", HttpStatus.NOT_ACCEPTABLE);
 		}
 
 		if (userService.findByEmail(createUserRequest.getEmail()).isPresent()) {
-			return new ResponseEntity("emailExists", HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity("email exists", HttpStatus.NOT_ACCEPTABLE);
 		}
 		User user = userMapper.toUser(createUserRequest);
 

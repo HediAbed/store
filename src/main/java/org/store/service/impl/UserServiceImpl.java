@@ -104,9 +104,11 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
     @Override
     public User saveUser(User user) {
-        String encryptedPassword = SecurityUtility.passwordEncoder().encode(user.getPassword());
-        user.setPassword(encryptedPassword);
-        return userRepository.saveAndFlush(user);
+        if (user!=null && user.getUsername() !=null){
+            String encryptedPassword = SecurityUtility.passwordEncoder().encode(user.getPassword());
+            user.setPassword(encryptedPassword);
+        }
+        return userRepository.save(user);
     }
     @Override
     public Optional<User> findByUsername(String username) {

@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.swagger.annotations.ApiModelProperty;
+import org.store.domain.enums.RoleType;
 
 @Entity
 @Table(name = "users")
@@ -35,11 +36,11 @@ public class User implements UserDetails {
     @ApiModelProperty(notes = "User password")
     private String password;
 
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     @ApiModelProperty(notes = "User firstName")
     private String firstName;
 
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     @ApiModelProperty(notes = "User lastName")
     private String lastName;
 
