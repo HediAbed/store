@@ -4,7 +4,13 @@ This Project is an example of an eCommerce for selling books: where there are tw
 * ROLE_ADMIN: can manage books (In Back-office).
 * ROLE_CLIENT: buy books on the store
 
+# Remarque
 
+* I did'n create a FrontEnd application yet
+
+* I made just some tests for some user services
+
+![](images/test.PNG)
 
 # RDB Conception
 
@@ -20,6 +26,7 @@ This Project is an example of an eCommerce for selling books: where there are tw
 * [thymeleaf](https://www.thymeleaf.org) - A template engine (I used it to generate Order template before sending it by email)
 * [MapStruct](https://mapstruct.org)- A code generation library that generates object mappers
 * [Swagger2](https://swagger.io/) - HTML to Markdown converter
+* [Mockito] - is an open source testing framework 
 
 
 # Start project 
