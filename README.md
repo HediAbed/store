@@ -21,12 +21,14 @@ This Project is an example of an eCommerce for selling books: where there are tw
 * [SpringBoot](https://spring.io/projects/spring-boot) - Framwork that reduce boilerplate configuration of Spring application and running with the smallest amount of code.
 * [JPA] - A specification that defines the management of relational data in a Java application. 
 * [Hibernate] - ORM and JPA implementation.
-* [postgresql](https://www.postgresql.org) - free and open-source relational database 
-* [JavaMail] - Java API used to send and receive email via SMTP
-* [thymeleaf](https://www.thymeleaf.org) - A template engine (I used it to generate Order template before sending it by email)
-* [MapStruct](https://mapstruct.org)- A code generation library that generates object mappers
-* [Swagger2](https://swagger.io/) - HTML to Markdown converter
-* [Mockito] - is an open source testing framework 
+* [postgresql](https://www.postgresql.org) - free and open-source relational database.
+* [H2](https://www.h2database.com/html/main.html) - A database loaded in memory (I use it for tests).
+* [JavaMail] - Java API used to send and receive email via SMTP.
+* [thymeleaf](https://www.thymeleaf.org) - A template engine (I used it to generate Order template before sending it by email).
+* [MapStruct](https://mapstruct.org)- A code generation library that generates object mappers.
+* [Swagger2](https://swagger.io/) -  An open-source software framework, that helps developers to document and consume REST web services
+* [Mockito] - An open source testing framework 
+* [JUnit] - A unit testing framework for Java
 
 
 # Start project 
